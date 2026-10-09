@@ -35,9 +35,9 @@ const Header = () => {
                 </Suspense>
             </div>
 
-            {/* <Suspense>
+            <Suspense>
                 <Marquee />
-            </Suspense> */}
+            </Suspense>
 
         </div>
     );
