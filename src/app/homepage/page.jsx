@@ -45,7 +45,7 @@ const HomePage = async () => {
 
 
                 {/* all items */}
-                {/* <div className="my-2" id="all-items">
+                <div className="my-2" id="all-items">
                     <h2 className='mb-4 text-xl font-extrabold'>সব পণ্য</h2>
                     <p className='text-gray-600 mb-4 '>মোট ৩৩টি পণ্য দেখানো হচ্ছে</p>
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -53,7 +53,7 @@ const HomePage = async () => {
                             <ProductCard key={item.id} item={item} />
                         ))}
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );
