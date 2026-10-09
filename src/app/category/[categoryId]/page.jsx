@@ -28,7 +28,7 @@ const CategoryDetails = async ({ params }) => {
                 </div>
             </div>
 
-            {/* <CategorySorting data={data} /> */}
+            <CategorySorting data={data} />
         </div>
     );
 };
