@@ -6,8 +6,14 @@ const CurrentDate = () => {
     const [date, setDate] = useState('');
 
     useEffect(() => {
-        setDate(new Date().toLocaleDateString('bn-BD', { dateStyle: 'full' }));
+        const handle = requestAnimationFrame(() => {
+            setDate(new Date().toLocaleDateString('bn-BD', { dateStyle: 'full' }));
+        });
+
+        return () => cancelAnimationFrame(handle);
     }, []);
+
+    if (!date) return null; 
 
     return <p className='text-[11px] font-semibold text-gray-700'>{date}</p>;
 };

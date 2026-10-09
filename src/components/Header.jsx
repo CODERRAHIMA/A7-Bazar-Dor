@@ -4,6 +4,7 @@ import CurrentDate from './CurrentDate';
 import NavLinks from './NavLinks';
 import Marquee from './Marquee';
 import Link from 'next/link';
+import GlobalLoading from '@/app/loading';
 
 const Header = () => {
     return (
@@ -30,7 +31,7 @@ const Header = () => {
             </div>
 
             <div className='border border-gray-100 p-3'>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<GlobalLoading />}>
                     <NavLinks />
                 </Suspense>
             </div>

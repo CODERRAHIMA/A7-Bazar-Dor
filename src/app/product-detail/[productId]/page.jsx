@@ -24,10 +24,10 @@ const ProductDetail = async ({ params }) => {
         <div className="max-w-5xl mx-auto px-4 py-10 text-[#26332b] min-h-screen">
 
             <div className="flex items-center gap-1 text-xs text-gray-600 mb-8 font-semibold px-1">
-                <span>হোম</span>
-                <span>&gt;</span>
-                <span>{data.categoryNameBn}</span>
-                <span>&gt;</span>
+                <span>হোম</span>&nbsp;
+                <span>&gt;</span>&nbsp;
+                <span>{data.categoryNameBn}</span>&nbsp;
+                <span>&gt;</span>&nbsp;
                 <span className="text-gray-700">{data.nameBn}</span>
             </div>
 
