@@ -18,7 +18,7 @@ const HomePage = async () => {
                 </Suspense>
 
                 {/* increased price items */}
-                {/* <div className="my-12">
+                <div className="my-12">
                     <h2 className="mb-4 text-lg font-extrabold">
                         <span className="text-red-600">▲</span> আজ দাম বেড়েছে
                     </h2>
@@ -28,10 +28,10 @@ const HomePage = async () => {
                             <ProductCard key={item.id} item={item} />
                         ))}
                     </div>
-                </div> */}
+                </div>
 
                 {/* decreased price items */}
-                {/* <div className="my-12">
+                <div className="my-12">
                     <h2 className="mb-4 text-lg font-extrabold">
                         <span className="text-green-600">▼</span> আজ দাম কমেছে
                     </h2>
@@ -41,7 +41,7 @@ const HomePage = async () => {
                             <ProductCard key={item.id} item={item} />
                         ))}
                     </div>
-                </div> */}
+                </div>
 
 
                 {/* all items */}
