@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
 
         <Header />
-        <main className="flex-1 bg-base-300">{children}</main>
+        <main className="flex-1 bg-[#F4F6F8]">{children}</main>
         <Footer />
       </body>
     </html>
