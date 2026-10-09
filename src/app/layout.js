@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
 
         <Header />
         <main className="flex-1 bg-base-300">{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
