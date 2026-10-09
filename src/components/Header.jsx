@@ -21,12 +21,16 @@ const Header = () => {
                 </Link>
 
                 <div className='flex items-center gap-6 text-[13px] font-semibold text-gray-800'>
-                    <button className='hover:text-black transition-colors font-bold'>
-                        সাইন ইন
-                    </button>
-                    <button className='bg-[#008744] px-4 py-2.5 text-white rounded-xl shadow-md hover:bg-[#007038] transition-all active:scale-95'>
+                    <Link href="/sign-in">
+                        <button className='hover:text-black transition-colors font-bold cursor-pointer'>
+                            সাইন ইন
+                        </button>
+                    </Link>
+                    <Link href="/sign-up">
+                        <button className='bg-[#008744] px-4 py-2.5 text-white rounded-xl shadow-md hover:bg-[#007038] transition-all active:scale-95 cursor-pointer'>
                         সাইন আপ
                     </button>
+                    </Link>
                 </div>
             </div>
 
