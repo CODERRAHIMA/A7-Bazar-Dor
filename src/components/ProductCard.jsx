@@ -12,11 +12,11 @@ const ProductCard = ({ item }) => {
                     </div>
 
                     <div>
-                        <h4 className="text-lg font-bold leading-6">
+                        <h4 className="text-lg mb-1 font-bold leading-6">
                             {item.nameBn}
                         </h4>
-                        <p className="text-xs text-[#4b5750]">
-                            প্রতি কেজি
+                        <p className="text-xs">
+                            প্রতি {item.unit === 'kg' ? 'কেজি' : item.unit === 'litre' ? 'লিটার' : item.unit === 'dozen' ? 'ডজন' : 'পিস'}
                         </p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ const ProductCard = ({ item }) => {
                             আজকের দাম
                         </p>
                         <h4 className="text-xl font-bold leading-6 text-[#26332b]">
-                            {item.today} টাকা
+                            {item.today.toLocaleString('bn-BD')} টাকা
                         </h4>
                     </div>
 

@@ -13,13 +13,13 @@ const Header = () => {
                     <div className="flex items-center gap-2">
                         <div className=" p-2 rounded-xl"><Image src="/logo-icon.png" alt="logo" width={25} height={25} /></div>
                         <div>
-                            <h2 className='font-extrabold'>বাজার দর</h2>
+                            <h2 className='text-[17px] mb-1 font-extrabold'>বাজার দর</h2>
                             <CurrentDate />
                         </div>
                     </div>
                 </Link>
 
-                <div className='flex items-center gap-6 text-xs font-semibold text-gray-800'>
+                <div className='flex items-center gap-6 text-[13px] font-semibold text-gray-800'>
                     <button className='hover:text-black transition-colors font-bold'>
                         সাইন ইন
                     </button>
@@ -29,7 +29,7 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className='border border-gray-100 p-4'>
+            <div className='border border-gray-100 p-3'>
                 <Suspense fallback={<div>Loading...</div>}>
                     <NavLinks />
                 </Suspense>

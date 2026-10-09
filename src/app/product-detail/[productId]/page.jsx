@@ -2,10 +2,9 @@ import React, { Suspense } from 'react';
 
 const ProductDetail = async ({ params }) => {
     const { productId } = await params;
-    const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products/${productId}`);
+    const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${productId}`);
     const data = await res.json();
 
-    console.log(data);
 
     const priceDiff = (data.today - data.yesterday);
     const isPriceUp = data.change?.dir === 'up' || priceDiff > 0;
@@ -24,7 +23,7 @@ const ProductDetail = async ({ params }) => {
     return (
         <div className="max-w-5xl mx-auto px-4 py-10 text-[#26332b] min-h-screen">
 
-            <div className="flex items-center gap-1 text-xs text-gray-600 mb-5 font-semibold px-1">
+            <div className="flex items-center gap-1 text-xs text-gray-600 mb-8 font-semibold px-1">
                 <span>হোম</span>
                 <span>&gt;</span>
                 <span>{data.categoryNameBn}</span>
@@ -42,24 +41,24 @@ const ProductDetail = async ({ params }) => {
                         <h1 className="text-2xl font-extrabold mb-1 tracking-tight">
                             {data.nameBn}
                         </h1>
-                        <p className="text-[10px] text-gray-500 font-bold tracking-wide">
-                            প্রতি কেজি · {data.categoryNameBn}
+                        <p className="text-[11px] text-gray-500 font-bold tracking-wide">
+                            প্রতি {data.unit === 'kg' ? 'কেজি' : data.unit === 'litre' ? 'লিটার' : data.unit === 'dozen' ? 'ডজন' : 'পিস'} · {data.categoryNameBn}
                         </p>
-                        <p className="text-xs mt-2 font-bold text-gray-500">
-                            গতকালের তুলনায় আজ দাম <span className="font-bold text-black">{isPriceUp ? 'বেড়েছে' : 'কমেছে'}</span> · <span>{Math.abs(priceDiff)} টাকা</span>
+                        <p className="text-xs mt-2 font-bold text-gray-600">
+                            গতকালের তুলনায় আজ দাম <span className="font-bold text-black">{isPriceUp ? 'বেড়েছে' : 'কমেছে'}</span> · <span>{Math.abs(priceDiff).toLocaleString('bn-BD')} টাকা</span>
                         </p>
                     </div>
                 </div>
 
-                <div className="w-full sm:w-[120px] bg-[#F4F6F8] rounded-2xl p-4 flex flex-col items-center justify-center text-center shrink-0">
+                <div className="w-full sm:w-[120px] bg-[#F4F6F8] rounded-2xl p-4 flex flex-col items-center justify-center text-center shrink-0 space-y-0.5">
                     <p className="text-[10px] font-bold text-gray-500 tracking-wide">আজকের দাম</p>
                     <p className="text-2xl font-extrabold mt-1.5 text-[#1e2722] tracking-tighter leading-none">
                         {data.today.toLocaleString('bn-BD')}
                     </p>
                     <p className="text-[10px] font-bold text-gray-500 mt-1">
-                        টাকা / কেজি
+                        টাকা / {data.unit === 'kg' ? 'কেজি' : data.unit === 'litre' ? 'লিটার' : data.unit === 'dozen' ? 'ডজন' : 'পিস'}
                     </p>
-                    <div className={`flex items-center gap-1 rounded-full bg-[#f0f5f1] px-3 py-1.5 text-sm font-semibold 
+                    <div className={`flex items-center gap-1 text-sm font-semibold 
                         ${data.change.pct === 0 ? "text-black" : data.change.dir === "up" ? "text-red-600" : "text-green-600"}`}
                     >
                         {data.change.pct === 0 ? "-" : data.change.dir === "up" ? "▲" : "▼"}
@@ -73,15 +72,15 @@ const ProductDetail = async ({ params }) => {
 
 
             {/* Price Summary */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+            <div className="bg-white border border-gray-200 rounded-2xl p-5 mb-18 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                 <div className="mb-8">
-                    <h3 className="text-sm font-bold mb-3.5 tracking-wide">দামের সারসংক্ষেপ</h3>
+                    <h3 className="text-[16px] font-bold mb-3.5 tracking-wide">দামের সারসংক্ষেপ</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                         <div className="border border-gray-300 rounded-xl py-3 px-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                             <p className="text-[10px] font-bold text-gray-500">সর্বনিম্ন মূল্য</p>
-                            <p className="text-[20px] font-black text-emerald-600 mt-1.5">
-                                {minPrice.toLocaleString('bn-BD')} টাকা
+                            <p className="text-[20px] font-extrabold text-emerald-600 mt-1.5">
+                                {minPrice.toLocaleString('bn-BD')} <span className="text-[13px] font-extrabold">টাকা</span>
                             </p>
                             <p className="text-[10px] font-bold text-gray-400 mt-1">
                                 সবচেয়ে কম দামের বাজার: <span className="text-purple-600">{minPriceMarket}</span>
@@ -90,8 +89,8 @@ const ProductDetail = async ({ params }) => {
 
                         <div className="border border-gray-300 rounded-xl py-3 px-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                             <p className="text-[10px] font-bold text-gray-500">সর্বোচ্চ মূল্য</p>
-                            <p className="text-[20px] font-black text-red-700 mt-1.5">
-                                {maxPrice.toLocaleString('bn-BD')} টাকা
+                            <p className="text-[20px] font-extrabold text-red-700 mt-1.5">
+                                {maxPrice.toLocaleString('bn-BD')} <span className="text-[13px] font-extrabold">টাকা</span>
                             </p>
                             <p className="text-[10px] font-bold text-gray-400 mt-1">
                                 সবচেয়ে বেশি দামের বাজার: <span className="text-purple-600">{maxPriceMarket}</span>
@@ -100,16 +99,18 @@ const ProductDetail = async ({ params }) => {
 
                         <div className="border border-gray-300 rounded-xl py-3 px-5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
                             <p className="text-[10px] font-bold text-gray-500">গত দাম</p>
-                            <p className="text-[20px] font-black text-emerald-600 mt-1.5">
-                                {data.yesterday.toLocaleString('bn-BD')} টাকা
+                            <p className="text-[20px] font-extrabold text-emerald-600 mt-1.5">
+                                {data.yesterday.toLocaleString('bn-BD')} <span className="text-[13px] font-extrabold">টাকা</span>
                             </p>
-                            <p className="text-[10px] font-bold text-gray-400 mt-1">প্রতি কেজি-এর হিসাবে</p>
+                            <p className="text-[10px] font-bold text-gray-400 mt-1">
+                                প্রতি {data.unit === 'kg' ? 'কেজি' : data.unit === 'litre' ? 'লিটার' : data.unit === 'dozen' ? 'ডজন' : 'পিস'}-এর হিসাবে
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 {/* Table */}
-                <h3 className="text-sm font-bold mb-3.5 tracking-wide">বাজারভিত্তিক আজকের দাম</h3>
+                <h3 className="text-[16px] font-bold mb-3.5 tracking-wide">বাজারভিত্তিক আজকের দাম</h3>
                 <div className="border border-gray-300 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse text-xs">
@@ -130,7 +131,7 @@ const ProductDetail = async ({ params }) => {
                                         <td className="px-6 py-3.5 text-right font-semibold">{item.min.toLocaleString('bn-BD')} টাকা</td>
                                         <td className="px-6 py-3.5 text-right font-semibold">{item.max.toLocaleString('bn-BD')} টাকা</td>
                                         <td className="px-6 py-3.5 text-right font-bold text-[#1e2722] bg-[#fafcfa] md:bg-transparent">
-                                            {item.avg} টাকা
+                                            {Number(item.avg).toLocaleString('bn-BD')} টাকা
                                         </td>
                                     </tr>
                                 ))}
