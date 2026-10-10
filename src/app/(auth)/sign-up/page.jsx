@@ -38,17 +38,17 @@ const SignUpPage = () => {
         }
     };
 
-    // const handleGoogleSignUp = async () => {
-    //     const res = await signIn.social({
-    //         provider: "google",
-    //     });
-    // }
+    const handleGoogleSignUp = async () => {
+        const res = await signIn.social({
+            provider: "google",
+        });
+    }
     
-    // const handleGithubSignUp = async () => {
-    //     const res = await signIn.social({
-    //         provider: "github",
-    //     });
-    // }
+    const handleGithubSignUp = async () => {
+        const res = await signIn.social({
+            provider: "github",
+        });
+    }
 
     return (
         <div className="bg-[#f0f5f1] flex flex-col items-center pb-12">
@@ -150,7 +150,7 @@ const SignUpPage = () => {
                     <div className="grid grid-cols-2 gap-2">
                         <button
                             type="button"
-                            
+                            onClick={handleGoogleSignUp}
                             className="flex items-center justify-center gap-1 h-[35px] rounded-md border border-[#e3e9e4] text-[11px] font-bold text-gray-700 whitespace-nowrap hover:bg-gray-100 transition"
                         >
                             <Image
@@ -164,7 +164,7 @@ const SignUpPage = () => {
 
                         <button
                             type="button"
-                            
+                            onClick={handleGithubSignUp}
                             className="flex items-center justify-center gap-1 h-[35px] rounded-md border border-[#e3e9e4] text-[11px] font-bold text-gray-700 whitespace-nowrap hover:bg-gray-100 transition"
                         >
                             <Image
