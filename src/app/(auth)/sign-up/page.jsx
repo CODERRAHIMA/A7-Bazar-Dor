@@ -41,16 +41,38 @@ const SignUpPage = () => {
     };
 
     const handleGoogleSignUp = async () => {
-        const res = await signIn.social({
-            provider: "google",
-        });
-    }
-    
+        try {
+            const res = await signIn.social({
+                provider: "google",
+            });
+
+            if (res.error) {
+                toast.error("Google দিয়ে সাইন আপ করা যায়নি!");
+                return;
+            }
+
+            toast.success("Google সাইন আপ সফল হয়েছে!");
+        } catch (error) {
+            toast.error("Google সাইন আপ করতে সমস্যা হয়েছে!");
+        }
+    };
+
     const handleGithubSignUp = async () => {
-        const res = await signIn.social({
-            provider: "github",
-        });
-    }
+        try {
+            const res = await signIn.social({
+                provider: "github",
+            });
+
+            if (res.error) {
+                toast.error("GitHub দিয়ে সাইন আপ করা যায়নি!");
+                return;
+            }
+
+            toast.success("GitHub সাইন আপ শুরু হয়েছে!");
+        } catch (error) {
+            toast.error("GitHub সাইন আপ করতে সমস্যা হয়েছে!");
+        }
+    };
 
     return (
         <div className="bg-[#f0f5f1] flex flex-col items-center pb-12">
