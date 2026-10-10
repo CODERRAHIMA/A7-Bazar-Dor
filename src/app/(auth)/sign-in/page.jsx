@@ -18,14 +18,12 @@ const SignInPage = () => {
 
         const { data: resData, error } = await signIn.email({
             email: data.email,
-            password: data.password
+            password: data.password,
+            rememberMe: true,
+            callbackURL: "/",
         })
 
-        if(!error) {
-            redirect("/");
-        }
-
-        if(error) {
+        if (error) {
             alert("আপনার ইমেইল অথবা পাসওয়ার্ডটি ভুল, দয়া করে আবার চেষ্টা করুন।");
             return;
         }
@@ -68,7 +66,7 @@ const SignInPage = () => {
                                 name="password"
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="কমপক্ষে ৮ অক্ষর"
-                                className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600" 
+                                className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600"
                             />
                             <button
                                 type="button"

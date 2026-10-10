@@ -17,22 +17,23 @@ const SignUpPage = () => {
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData.entries());
 
-        if(data.password !== data.confirmPassword) {
+        if (data.password !== data.confirmPassword) {
             alert("পাসওয়ার্ড দুটি মিলছে না, দয়া করে আবার চেক করুন!");
             return;
         }
 
         const { data: resData, error } = await signUp.email({
             name: data.name,
+            image: data.image,
             email: data.email,
             password: data.password
         })
 
-        if(error) {
+        if (error) {
             alert("দুঃখিত, একটি সমস্যা হয়েছে। আবার চেষ্টা করুন!");
             return;
         }
-        if(!error) {
+        if (!error) {
             redirect("/");
         }
     };
@@ -67,6 +68,18 @@ const SignUpPage = () => {
 
                     <div className="flex flex-col gap-1 mb-3">
                         <label className="text-[11px] font-semibold text-gray-600">
+                            ছবি
+                        </label>
+                        <input
+                            name="image"
+                            type="url"
+                            className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600"
+                            placeholder="https://example.com/image.jpg"
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-1 mb-3">
+                        <label className="text-[11px] font-semibold text-gray-600">
                             ইমেইল
                         </label>
                         <input
@@ -86,7 +99,7 @@ const SignUpPage = () => {
                                 name="password"
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="কমপক্ষে ৮ অক্ষর"
-                                className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600" 
+                                className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600"
                             />
                             <button
                                 type="button"
@@ -107,7 +120,7 @@ const SignUpPage = () => {
                                 name="confirmPassword"
                                 type={confirmPassword ? 'text' : 'password'}
                                 placeholder="আবার লিখুন"
-                                className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600" 
+                                className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600"
                             />
                             <button
                                 type="button"

@@ -3,7 +3,7 @@ import BannerPage from './Banner';
 import ProductCard from '@/components/ProductCard';
 
 const HomePage = async () => {
-    const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
+    const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products");
     const data = await res.json();
 
     const upData = data.filter(item => item?.change?.dir === "up").sort((a, b) => b.change.pct - a.change.pct);
