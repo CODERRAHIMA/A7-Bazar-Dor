@@ -1,6 +1,6 @@
 "use client";
 
-import { authClient, signUp } from '@/lib/auth-client';
+import { authClient, signIn, signUp } from '@/lib/auth-client';
 import { Eye, EyeOff } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,9 +34,21 @@ const SignUpPage = () => {
             return;
         }
         if (!error) {
-            redirect("/");
+            redirect("/sign-in");
         }
     };
+
+    // const handleGoogleSignUp = async () => {
+    //     const res = await signIn.social({
+    //         provider: "google",
+    //     });
+    // }
+    
+    // const handleGithubSignUp = async () => {
+    //     const res = await signIn.social({
+    //         provider: "github",
+    //     });
+    // }
 
     return (
         <div className="bg-[#f0f5f1] flex flex-col items-center pb-12">
@@ -63,18 +75,6 @@ const SignUpPage = () => {
                             type="text"
                             className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600"
                             placeholder="যেমন: রহিম উদ্দিন"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-1 mb-3">
-                        <label className="text-[11px] font-semibold text-gray-600">
-                            ছবি
-                        </label>
-                        <input
-                            name="image"
-                            type="url"
-                            className="w-full h-[35px] px-2 text-[13px] rounded-md border border-[#e1e9e2] bg-transparent outline-none focus:border-green-600"
-                            placeholder="https://example.com/image.jpg"
                         />
                     </div>
 
@@ -150,6 +150,7 @@ const SignUpPage = () => {
                     <div className="grid grid-cols-2 gap-2">
                         <button
                             type="button"
+                            
                             className="flex items-center justify-center gap-1 h-[35px] rounded-md border border-[#e3e9e4] text-[11px] font-bold text-gray-700 whitespace-nowrap hover:bg-gray-100 transition"
                         >
                             <Image
@@ -163,6 +164,7 @@ const SignUpPage = () => {
 
                         <button
                             type="button"
+                            
                             className="flex items-center justify-center gap-1 h-[35px] rounded-md border border-[#e3e9e4] text-[11px] font-bold text-gray-700 whitespace-nowrap hover:bg-gray-100 transition"
                         >
                             <Image

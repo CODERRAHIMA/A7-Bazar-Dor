@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 
 const ProductDetail = async ({ params }) => {
     const { productId } = await params;
-    const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/products/${productId}`);
+    const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products/${productId}`);
     const data = await res.json();
 
 

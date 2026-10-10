@@ -5,7 +5,7 @@ import NavLinks from './NavLinks';
 import Marquee from './Marquee';
 import Link from 'next/link';
 import GlobalLoading from '@/app/loading';
-import UserInfoPage from '@/app/(auth)/UserInfo/page';
+import UserInfoPage from './UserInfo';
 
 const Header = () => {
 
