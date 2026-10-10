@@ -5,6 +5,7 @@ import { LogOut } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const Page = () => {
     const { data: session, isPending } = useSession();
@@ -18,47 +19,39 @@ const Page = () => {
         );
     }
 
+
     const handleSignOut = async () => {
         await signOut({
             fetchOptions: {
                 onSuccess: () => {
+                    toast.success("আপনি সফলভাবে সাইন আউট করেছেন!");
                     router.push("/");
-                }
-            }
+                },
+            },
         });
     };
 
     const handleUpdateName = async (e) => {
         e.preventDefault();
+
         const formData = new FormData(e.currentTarget);
         const userData = Object.fromEntries(formData.entries());
 
         try {
-            const resData = await updateUser({
-                name: userData.name
-            })
+            const { data, error } = await updateUser({
+                name: userData.name,
+            });
 
-            if (resData.error) {
-                console.error("Error updating user:", resData.error);
-
-                // toast.danger("Failed to update name", {
-                //     description: resData.error.message,
-                // });
-
+            if (error) {
+                toast.error("নাম আপডেট করতে ব্যর্থ হয়েছে, দয়া করে আবার চেষ্টা করুন!");
                 return;
             }
 
-            // toast.success("Profile updated successfully!", {
-            //     description: "Your name has been updated.",
-            // });
+            toast.success("আপনার নাম সফলভাবে আপডেট হয়েছে!");
         } catch (error) {
-            console.error("Error updating user:", error);
-
-            // toast.danger("Something went wrong", {
-            //     description: "Please try again.",
-            // });
+            toast.error("নাম আপডেট করতে ব্যর্থ হয়েছে, দয়া করে আবার চেষ্টা করুন!");
         }
-    }
+    };
 
     return (
         <div className="p-6 max-w-[650px] mx-auto flex flex-col gap-6">

@@ -4,17 +4,31 @@ import { signOut, useSession } from '@/lib/auth-client';
 import { LogOut, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const UserInfoPage = () => {
 
     const { data: session, isPending } = useSession();
+    const router = useRouter();
 
     if (isPending) {
         return (
             <>...</>
         )
     }
+
+    const handleSignOut = async () => {
+        await signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    toast.success("আপনি সফলভাবে সাইন আউট করেছেন!");
+                    router.push("/");
+                },
+            },
+        });
+    };
 
     return (
         <div>
@@ -53,7 +67,7 @@ const UserInfoPage = () => {
                                 </Link>
                             </li>
                             <li>
-                                <button onClick={() => signOut()} className="flex items-center gap-3 px-2 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg w-full text-left active:bg-red-100">
+                                <button onClick={handleSignOut} className="flex items-center gap-3 px-2 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg w-full text-left active:bg-red-100">
                                     <LogOut className="w-4 h-4" />
                                     <span>সাইন আউট</span>
                                 </button>

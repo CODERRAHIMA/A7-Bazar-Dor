@@ -2,6 +2,7 @@ import { Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const notoSansBengali = Noto_Sans_Bengali({
   subsets: ["latin", "bengali"],
@@ -20,10 +21,34 @@ export default function RootLayout({ children }) {
       className={`${notoSansBengali.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-
         <Header />
         <main className="flex-1 bg-[#F4F6F8]">{children}</main>
         <Footer />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+
+            success: {
+              style: {
+                background: "#f0f5f1",
+                color: "#15803d",
+                border: "1px solid #dce6df",
+                borderRadius: "12px",
+                fontSize: "13px",
+              },
+            },
+
+            error: {
+              style: {
+                background: "#fef2f2",
+                color: "#dc2626",
+                border: "1px solid #fee2e2",
+                borderRadius: "12px",
+                fontSize: "13px",
+              },
+            },
+          }}
+        />
       </body>
     </html>
   );

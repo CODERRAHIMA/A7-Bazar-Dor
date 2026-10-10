@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const SignInPage = () => {
 
@@ -19,13 +20,16 @@ const SignInPage = () => {
         const { data: resData, error } = await signIn.email({
             email: data.email,
             password: data.password,
-            rememberMe: true,
-            callbackURL: "/",
+            rememberMe: true
         })
 
         if (error) {
-            alert("আপনার ইমেইল অথবা পাসওয়ার্ডটি ভুল, দয়া করে আবার চেষ্টা করুন।");
+            toast.error("আপনার ইমেইল অথবা পাসওয়ার্ডটি ভুল, দয়া করে আবার চেষ্টা করুন।");
             return;
+        } 
+        if(!error) {
+            toast.success("আপনার অ্যাকাউন্ট সফলভাবে সাইন ইন হয়েছে!");
+            redirect("/");
         }
     };
 

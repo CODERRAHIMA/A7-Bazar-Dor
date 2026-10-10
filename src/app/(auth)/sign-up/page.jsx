@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const SignUpPage = () => {
 
@@ -18,7 +19,7 @@ const SignUpPage = () => {
         const data = Object.fromEntries(formData.entries());
 
         if (data.password !== data.confirmPassword) {
-            alert("পাসওয়ার্ড দুটি মিলছে না, দয়া করে আবার চেক করুন!");
+            toast.error("পাসওয়ার্ড দুটি মিলছে না, দয়া করে আবার চেক করুন!");
             return;
         }
 
@@ -30,10 +31,11 @@ const SignUpPage = () => {
         })
 
         if (error) {
-            alert("দুঃখিত, একটি সমস্যা হয়েছে। আবার চেষ্টা করুন!");
+            toast.error("দুঃখিত, একটি সমস্যা হয়েছে। আবার চেষ্টা করুন!");
             return;
         }
         if (!error) {
+            toast.success("আপনার অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
             redirect("/");
         }
     };
