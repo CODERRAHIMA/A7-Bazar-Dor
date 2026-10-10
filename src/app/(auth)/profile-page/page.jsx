@@ -62,9 +62,9 @@ const Page = () => {
             </div>
 
             <div className="bg-white border border-[#e2e9e3] rounded-xl px-5 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex flex-wrap justify-between items-center gap-4">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1 sm:gap-4">
                     <div className="avatar">
-                        <div className="w-16 h-16 rounded-full border border-gray-100 overflow-hidden">
+                        <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-full border border-gray-100 overflow-hidden">
                             <Image
                                 src="/user-default.jpg"
                                 alt="user"
@@ -75,8 +75,8 @@ const Page = () => {
                         </div>
                     </div>
                     <div>
-                        <h2 className="text-base font-bold text-gray-800">{session?.user?.name || "ব্যবহারকারী"}</h2>
-                        <p className="text-sm text-gray-500">{session?.user?.email || "ইমেইল পাওয়া যায়নি"}</p>
+                        <h2 className="text-base font-bold text-gray-800">{session?.user?.name}</h2>
+                        <p className="text-sm text-gray-500">{session?.user?.email}</p>
                     </div>
                 </div>
 

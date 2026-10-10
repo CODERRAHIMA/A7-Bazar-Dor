@@ -11,8 +11,8 @@ const HomePage = async () => {
     const downData = data.filter(item => item?.change?.dir === "down").sort((a, b) => a.change.pct - b.change.pct);
 
     return (
-        <div className='py-12'>
-            <div className="max-w-7xl mx-auto">
+        <div className='py-6 sm:py-12'>
+            <div className="max-w-[90%] 2xl:max-w-7xl mx-auto">
                 <Suspense>
                     <BannerPage />
                 </Suspense>

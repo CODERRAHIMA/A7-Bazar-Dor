@@ -9,7 +9,7 @@ const CategorySorting = ({ data }) => {
 
     const handleSortChange = (e) => {
         const selectedValue = e.target.value;
-        setIsLoading(true); 
+        setIsLoading(true);
         setSortBy(selectedValue);
     };
 
@@ -35,19 +35,25 @@ const CategorySorting = ({ data }) => {
 
     return (
         <>
-            <div className="my-5 flex items-center justify-end gap-2 rounded-2xl border border-[#dfe8e1] bg-[#f9fcfa] px-4 py-4 sm:px-5">
-                <span className="text-sm text-gray-500">সাজান</span>
+            <div className="my-5 flex items-center justify-end gap-4 rounded-2xl border border-[#dfe8e1] bg-[#f9fcfa] px-4 py-4 sm:px-5">
+                <label
+                    htmlFor="sort"
+                    className="text-xs font-semibold tracking-wider text-gray-700 sm:text-sm"
+                >
+                    সাজান
+                </label>
 
                 <select
                     id="sort"
                     value={sortBy}
                     onChange={handleSortChange} 
-                    className="rounded-lg border border-[#d1d9d2] bg-transparent px-3 py-2 text-sm text-gray-800 outline-none focus:border-green-600"
+                    className="select h-10 min-h-10 w-42 sm:w-45 rounded-lg border border-[#d1d9d2] bg-gray-100 px-3 text-sm font-medium text-gray-800 outline-none focus:border-green-600"
                 >
                     <option value="default">ডিফল্ট</option>
                     <option value="price-low">দাম: কম থেকে বেশি</option>
                     <option value="price-high">দাম: বেশি থেকে কম</option>
                 </select>
+
             </div>
 
             <p className="text-sm text-gray-500 my-8">মোট {data.length.toLocaleString('bn-BD')}টি পণ্য দেখানো হচ্ছে</p>

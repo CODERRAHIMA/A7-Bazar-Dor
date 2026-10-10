@@ -25,9 +25,9 @@ const ProductDetail = async ({ params }) => {
     const maxPriceMarket = data.markets.find(m => m.max === maxPrice)?.market || 'সবচেয়ে বেশি দামের বাজার';
 
     return (
-        <div className="max-w-5xl mx-auto px-4 py-10 text-[#26332b] min-h-screen">
+        <div className="max-w-5xl mx-auto px-4 py-5 sm:py-10 text-[#26332b] min-h-screen">
 
-            <div className="flex items-center gap-1 text-xs text-gray-600 mb-8 font-semibold px-1">
+            <div className="flex items-center gap-1 text-xs text-gray-600 mb-4 sm:mb-8 font-semibold px-1">
                 <span>হোম</span>&nbsp;
                 <span>&gt;</span>&nbsp;
                 <span>{data.categoryNameBn}</span>&nbsp;
@@ -35,37 +35,44 @@ const ProductDetail = async ({ params }) => {
                 <span className="text-gray-700">{data.nameBn}</span>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col sm:flex-row items-center justify-between gap-6 mb-8">
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 max-[399px]:p-3 shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-row items-center justify-between gap-6 max-[399px]:gap-2 mb-8">
 
-                <div className="flex items-center gap-5 w-full sm:w-auto">
-                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#f2f6f3] text-2xl">
+                <div className="flex items-center gap-3 sm:gap-5 max-[399px]:gap-2 w-full sm:w-auto min-w-0">
+                    <div className="flex h-16 w-16 max-[399px]:h-10 max-[399px]:w-10 shrink-0 items-center justify-center rounded-2xl max-[399px]:rounded-lg bg-[#f2f6f3] text-2xl max-[399px]:text-lg">
                         {data.image}
                     </div>
-                    <div>
-                        <h1 className="text-2xl font-extrabold mb-1 tracking-tight">
+
+                    <div className="min-w-0">
+                        <h1 className="text-lg sm:text-2xl max-[399px]:text-sm font-extrabold mb-0 sm:mb-1 tracking-tight">
                             {data.nameBn}
                         </h1>
-                        <p className="text-[11px] text-gray-500 font-bold tracking-wide">
+
+                        <p className="text-[8px] sm:text-[11px] text-gray-500 font-bold tracking-wide">
                             প্রতি {data.unit === 'kg' ? 'কেজি' : data.unit === 'litre' ? 'লিটার' : data.unit === 'dozen' ? 'ডজন' : 'পিস'} · {data.categoryNameBn}
                         </p>
-                        <p className="text-xs mt-2 font-bold text-gray-600">
+
+                        <p className="text-[8px] sm:text-xs w-[120px] sm:w-fit mt-2 max-[399px]:mt-1 font-bold text-gray-600">
                             গতকালের তুলনায় আজ দাম <span className="font-bold text-black">{isPriceUp ? 'বেড়েছে' : 'কমেছে'}</span> · <span>{Math.abs(priceDiff).toLocaleString('bn-BD')} টাকা</span>
                         </p>
                     </div>
                 </div>
 
-                <div className="w-full sm:w-[120px] bg-[#F4F6F8] rounded-2xl p-4 flex flex-col items-center justify-center text-center shrink-0 space-y-0.5">
-                    <p className="text-[10px] font-bold text-gray-500 tracking-wide">আজকের দাম</p>
-                    <p className="text-2xl font-extrabold mt-1.5 text-[#1e2722] tracking-tighter leading-none">
+                <div className="w-[120px] max-[399px]:w-[82px] bg-[#F4F6F8] rounded-2xl max-[399px]:rounded-lg p-2 sm:p-4 max-[399px]:p-1.5 flex flex-col items-center justify-center text-center shrink-0 space-y-0.5">
+                    <p className="text-[9px] sm:text-[10px] max-[399px]:text-[8px] font-bold text-gray-500 tracking-wide">আজকের দাম</p>
+
+                    <p className="text-2xl max-[399px]:text-lg font-extrabold mt-1.5 max-[399px]:mt-1 text-[#1e2722] tracking-tighter leading-none">
                         {data.today.toLocaleString('bn-BD')}
                     </p>
-                    <p className="text-[10px] font-bold text-gray-500 mt-1">
+
+                    <p className="text-[8px] sm:text-[10px] max-[399px]:text-[7px] font-bold text-gray-500 mt-1">
                         টাকা / {data.unit === 'kg' ? 'কেজি' : data.unit === 'litre' ? 'লিটার' : data.unit === 'dozen' ? 'ডজন' : 'পিস'}
                     </p>
-                    <div className={`flex items-center gap-1 text-sm font-semibold 
+
+                    <div className={`flex items-center gap-1 text-[10px] sm:text-sm max-[399px]:text-[9px] font-semibold 
                         ${data.change.pct === 0 ? "text-black" : data.change.dir === "up" ? "text-red-600" : "text-green-600"}`}
                     >
                         {data.change.pct === 0 ? "-" : data.change.dir === "up" ? "▲" : "▼"}
+
                         <span>
                             {data.change.pct === 0 ? "০.০" : new Intl.NumberFormat("bn-BD").format(Math.abs(data.change.pct))}%
                         </span>
@@ -134,7 +141,7 @@ const ProductDetail = async ({ params }) => {
                                         <td className="px-6 py-3.5 text-gray-500 font-semibold text-left">{item.division}</td>
                                         <td className="px-6 py-3.5 text-right font-semibold">{item.min.toLocaleString('bn-BD')} টাকা</td>
                                         <td className="px-6 py-3.5 text-right font-semibold">{item.max.toLocaleString('bn-BD')} টাকা</td>
-                                        <td className="px-6 py-3.5 text-right font-bold text-[#1e2722] bg-[#fafcfa] md:bg-transparent">
+                                        <td className="px-6 py-3.5 text-right font-bold text-[#1e2722]">
                                             {Number(item.avg).toLocaleString('bn-BD')} টাকা
                                         </td>
                                     </tr>

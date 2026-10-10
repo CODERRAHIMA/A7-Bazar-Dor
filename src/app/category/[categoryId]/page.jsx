@@ -13,7 +13,7 @@ const CategoryDetails = async ({ params }) => {
     }
 
     return (
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-[90%] 2xl:max-w-7xl mx-auto'>
             <div className="my-5 flex items-center gap-3 rounded-2xl border border-[#dfe8e1] bg-[#f9fcfa] px-4 py-5 sm:px-5">
                 <div className="flex shrink-0 items-center justify-center text-4xl">
                     {data[0]?.image}

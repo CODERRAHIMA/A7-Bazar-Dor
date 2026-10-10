@@ -76,14 +76,15 @@ const UserInfoPage = () => {
                     </div>
                 </div>
                     :
-                    <div className='flex items-center gap-6 text-[13px] font-semibold text-gray-800'>
+                    <div className="flex items-center gap-3 sm:gap-6 text-[12px] sm:text-[13px] font-semibold text-gray-800 shrink-0">
                         <Link href="/sign-in">
-                            <button className='hover:text-black transition-colors font-bold cursor-pointer'>
+                            <button className="hover:text-black transition-colors font-bold cursor-pointer whitespace-nowrap">
                                 সাইন ইন
                             </button>
                         </Link>
+
                         <Link href="/sign-up">
-                            <button className='bg-[#008744] px-4 py-2.5 text-white rounded-xl shadow-md hover:bg-[#007038] transition-all active:scale-95 cursor-pointer'>
+                            <button className="bg-[#008744] px-3 sm:px-4 py-2 sm:py-2.5 text-white rounded-lg sm:rounded-xl shadow-md hover:bg-[#007038] transition-all active:scale-95 cursor-pointer whitespace-nowrap">
                                 সাইন আপ
                             </button>
                         </Link>
