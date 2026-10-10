@@ -34,7 +34,7 @@ const SignUpPage = () => {
             return;
         }
         if (!error) {
-            redirect("/sign-in");
+            redirect("/");
         }
     };
 
