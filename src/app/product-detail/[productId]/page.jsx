@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import React, { Suspense } from 'react';
 
 const ProductDetail = async ({ params }) => {
@@ -5,6 +6,9 @@ const ProductDetail = async ({ params }) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products/${productId}`);
     const data = await res.json();
 
+    if (!Array.isArray(data?.markets)) {
+        notFound();
+    }
 
     const priceDiff = (data.today - data.yesterday);
     const isPriceUp = data.change?.dir === 'up' || priceDiff > 0;

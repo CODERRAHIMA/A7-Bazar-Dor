@@ -1,6 +1,5 @@
 import CategorySorting from '@/components/CategorySorting';
-import ProductCard from '@/components/ProductCard';
-import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import React, { Suspense } from 'react';
 
 const CategoryDetails = async ({ params }) => {
@@ -8,7 +7,10 @@ const CategoryDetails = async ({ params }) => {
 
     const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products?category=${categoryId}`);
     const data = await res.json();
-    
+
+    if (!data || data.length === 0) {
+        notFound();
+    }
 
     return (
         <div className='max-w-7xl mx-auto'>
@@ -35,7 +37,7 @@ const CategoryDetails = async ({ params }) => {
 
 const CategoryDetailsPage = ({ params }) => {
     return (
-        <Suspense>
+        <Suspense fallback={<div className="text-center py-10 text-xs text-gray-400">লোড হচ্ছে...</div>}>
             <CategoryDetails params={params} />
         </Suspense>
     );

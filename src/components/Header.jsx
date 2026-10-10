@@ -25,7 +25,7 @@ const Header = () => {
                 <UserInfoPage />
             </div>
 
-            <div className='border border-gray-100 p-3'>
+            <div className='border border-gray-100 p-2'>
                 <Suspense fallback={<GlobalLoading />}>
                     <NavLinks />
                 </Suspense>

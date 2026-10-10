@@ -17,7 +17,7 @@ const Marquee = async () => {
 
                         return (
                             <Link href={`/product-detail/${item.id}`} key={i}>
-                                <div className="flex items-center gap-2 border-r border-gray-200 pr-6 last:border-none whitespace-nowrap">
+                                <div className="flex items-center gap-2 border-r border-gray-200 pr-6 whitespace-nowrap">
 
                                     <span className="text-base filter grayscale opacity-80">{item.image}</span>
 
