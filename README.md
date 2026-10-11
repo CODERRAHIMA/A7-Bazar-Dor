@@ -20,4 +20,3 @@ A Bengali market price dashboard to explore daily grocery prices, track price ch
 - **Authentication:** Better Auth
 - **Database:** MongoDB
 - **Icons & Notifications:** Lucide React, React Hot Toast
-- **API:** Programming Hero BazarDor API
