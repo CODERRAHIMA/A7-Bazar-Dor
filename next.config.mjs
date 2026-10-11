@@ -1,25 +1,20 @@
 /** @type {import('next').NextConfig} */
-const isNetlify = process.env.NETLIFY === 'true';
-
 const nextConfig = {
-  experimental: isNetlify ? {} : {
+  /* config options here */
+  experimental: {
     agentFeedback: true,
   },
-  
-  cacheComponents: !isNetlify,
-  partialPrefetching: !isNetlify,
-  reactCompiler: !isNetlify,
-  
-  ...(isNetlify ? {} : {
-    turbopack: {
-      rules: {
-        "*.css": {
-          loaders: ["@tailwindcss/turbopack"],
-          as: "*.css",
-        },
+  cacheComponents: true,
+  partialPrefetching: true,
+  reactCompiler: true,
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
       },
     },
-  })
+  },
 };
 
 export default nextConfig;

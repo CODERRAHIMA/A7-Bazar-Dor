@@ -8,5 +8,6 @@
 [functions]
   node_bundler = "esbuild"
 
-[factory]
-  excludeEdgeFunctions = true
+[build.environment]
+  NEXT_DISABLE_EDGE_FUNCTIONS = "true"
+  NETLIFY_NEXT_FORCE_SERVERLESS = "true"
