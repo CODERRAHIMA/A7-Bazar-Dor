@@ -158,7 +158,7 @@ const SignUpPage = () => {
 
                     <button
                         type="submit"
-                        className="w-full h-[35px] mt-3 rounded-md bg-green-700 text-white text-xs font-semibold shadow-[0_2px_2px_rgba(0,0,0,0.2)] hover:bg-green-800 transition"
+                        className="w-full h-[35px] mt-3 rounded-md bg-green-700 text-white text-xs font-semibold shadow-[0_2px_2px_rgba(0,0,0,0.2)] hover:bg-green-800 transition cursor-pointer"
                     >
                         অ্যাকাউন্ট তৈরি করুন
                     </button>
@@ -175,7 +175,7 @@ const SignUpPage = () => {
                         <button
                             type="button"
                             onClick={handleGoogleSignUp}
-                            className="flex items-center justify-center gap-1 h-[35px] rounded-md border border-[#e3e9e4] text-[11px] font-bold text-gray-700 whitespace-nowrap hover:bg-gray-100 transition"
+                            className="flex items-center justify-center gap-1 h-[35px] rounded-md border border-[#e3e9e4] text-[11px] font-bold text-gray-700 whitespace-nowrap hover:bg-gray-100 transition cursor-pointer"
                         >
                             <Image
                                 src="/search.png"
@@ -189,7 +189,7 @@ const SignUpPage = () => {
                         <button
                             type="button"
                             onClick={handleGithubSignUp}
-                            className="flex items-center justify-center gap-1 h-[35px] rounded-md border border-[#e3e9e4] text-[11px] font-bold text-gray-700 whitespace-nowrap hover:bg-gray-100 transition"
+                            className="flex items-center justify-center gap-1 h-[35px] rounded-md border border-[#e3e9e4] text-[11px] font-bold text-gray-700 whitespace-nowrap hover:bg-gray-100 transition cursor-pointer"
                         >
                             <Image
                                 src="/github.png"
